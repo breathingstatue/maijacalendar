@@ -29,12 +29,12 @@ jobs:
   - name: Setup Python
     uses: actions/setup-python@v1
     with:
-     python-version: ${{ env.PYTHON_VERSION }}
+     python-version: ${{ env.'3.11' }}
   # install dependencies
   - name: python install
-    working-directory: ${{ env.WORKING_DIRECTORY }}
+    working-directory: ${{ env.'calendar' }}
     run: |
-     sudo apt install python${{ env.PYTHON_VERSION }}-venv
+     sudo apt install python${{ env.'3.11.' }}-venv
      python -m venv --copies antenv
      source antenv/bin/activate
      pip install setuptools
@@ -45,15 +45,15 @@ jobs:
      creds: ${{ secrets.AZURE_CREDENTIALS_GITHUB_SECRET }}
   - uses: azure/appservice-settings@v1
     with:
-     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+     app-name: ${{ env.'maijacalendar' }}
      mask-inputs: false
-     general-settings-json: '{"linuxFxVersion": "PYTHON|${{ env.PYTHON_VERSION }}"}' #'General configuration settings as Key Value pairs'
+     general-settings-json: '{"linuxFxVersion": "PYTHON|${{ env.'3.11' }}"}' #'General configuration settings as Key Value pairs'
   # deploy web app
   - uses: azure/webapps-deploy@v2
     with:
-     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-     package: ${{ env.WORKING_DIRECTORY }}
-     startup-command: ${{ env.STARTUP_COMMAND }}
+     app-name: ${{ env.'maijacalendar' }}
+     package: ${{ env.'calendar' }}
+     startup-command: ${{ env.'' }}
   # Azure logout
   - name: logout
     run: |
