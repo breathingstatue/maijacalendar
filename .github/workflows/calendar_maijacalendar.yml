@@ -45,13 +45,13 @@ jobs:
      creds: ${{ secrets.AZURE_CREDENTIALS_GITHUB_SECRET }}
   - uses: azure/appservice-settings@v1
     with:
-     app-name: ${{ env.'maijacalendar' }}
+     app-name: ${{ env.maijacalendar }}
      mask-inputs: false
      general-settings-json: '{"linuxFxVersion": "PYTHON|${{ env.'3.11' }}"}' #'General configuration settings as Key Value pairs'
   # deploy web app
   - uses: azure/webapps-deploy@v2
     with:
-     app-name: ${{ env.'maijacalendar' }}
+     app-name: ${{ env.maijacalendar }}
      package: ${{ env.'calendar' }}
      startup-command: ${{ env.'' }}
   # Azure logout
