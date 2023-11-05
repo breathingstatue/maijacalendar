@@ -1,3 +1,1 @@
-# requirements.txt
-tkinter
-Pillow
+python==3.11
