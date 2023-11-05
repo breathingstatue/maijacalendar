@@ -34,5 +34,5 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'maijacalendar'
-          slot-name: ''
+          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FAFF176373FD44709D78276AF0F55BFA }}
